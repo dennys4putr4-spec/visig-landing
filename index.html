@@ -1,625 +1,703 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  CheckCircle2, 
-  XCircle, 
-  Zap, 
-  Video, 
-  Target, 
-  TrendingUp, 
-  ChevronDown, 
-  ChevronUp, 
-  Play, 
-  ShoppingCart,
-  MessageSquare,
-  Sparkles,
-  Link as LinkIcon,
-  Clock,
-  ArrowRight,
-  Sun,
-  Key,
-  Share2,
-  Cpu,
-  Layers
-} from "lucide-react";
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISIG - Viral Script Generator</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-export default function App() {
-  const [isScrolled, setIsScrolled] = useState(false);
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
-  // Handle scroll for sticky header
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    <!-- Tailwind Config for specific fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans selection:bg-indigo-500 selection:text-white min-h-screen">
 
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-2 text-left cursor-pointer transition-transform hover:scale-105">
+                <div class="bg-blue-600 text-white p-2 rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                    <i data-lucide="video" class="text-white w-6 h-6" style="fill: currentColor;"></i>
+                </div>
+                <span class="text-2xl font-black italic tracking-tight text-white">VISIG</span>
+            </a>
 
-  return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-indigo-500 selection:text-white">
-      {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-slate-800 py-4' : 'bg-transparent py-6'}`}>
-        <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-          <button onClick={() => scrollToSection('home')} className="flex items-center gap-2 text-left cursor-pointer transition-transform hover:scale-105">
-            <div className="bg-blue-600 text-white p-2 rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.5)]">
-              <Video size={24} fill="currentColor" className="text-white" />
+            <!-- Desktop Nav Links -->
+            <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#problem" class="hover:text-indigo-400 transition-colors">Masalah</a>
+                <a href="#features" class="hover:text-indigo-400 transition-colors">Fitur</a>
+                <a href="#how-it-works" class="hover:text-indigo-400 transition-colors">Cara Kerja</a>
+                <a href="#pricing" class="hover:text-indigo-400 transition-colors">Harga</a>
+                <a href="#faq" class="hover:text-indigo-400 transition-colors">FAQ</a>
             </div>
-            <span className="text-2xl font-black italic tracking-tight text-white">VISIG</span>
-          </button>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
-            <button onClick={() => scrollToSection('problem')} className="hover:text-indigo-400 transition-colors">Masalah</button>
-            <button onClick={() => scrollToSection('features')} className="hover:text-indigo-400 transition-colors">Fitur</button>
-            <button onClick={() => scrollToSection('how-it-works')} className="hover:text-indigo-400 transition-colors">Cara Kerja</button>
-            <button onClick={() => scrollToSection('pricing')} className="hover:text-indigo-400 transition-colors">Harga</button>
-            <button onClick={() => scrollToSection('faq')} className="hover:text-indigo-400 transition-colors">FAQ</button>
-          </div>
-
-          <a 
-            href="https://detrastudios.myr.id/catalog/visig-tools-bikin-script-buat-affiliator-creator"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(245,158,11,0.3)]"
-          >
-            Akses Sekarang <ArrowRight size={16} />
-          </a>
+            <a href="https://detrastudios.myr.id/catalog/visig-tools-bikin-script-buat-affiliator-creator" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+                Akses Sekarang <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
         </div>
-      </nav>
+    </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-        {/* Background Gradients */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        <!-- Background Gradients -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none"></div>
         
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Hero Copy */}
-            <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-medium text-sm mb-6">
-                <Zap size={16} className="text-amber-400" /> Viral Script Generator AI
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
-                Udah Niat Bikin Konten Produk... <br className="hidden lg:block"/>
-                Tiba-tiba Nge-blank, Ide Mentok.. <br className="hidden lg:block"/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-                  dan Akhirnya Burnout
-                </span>
-              </h1>
-              <p className="text-lg md:text-xl text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0">
-                Sekarang kamu bisa bikin script konten viral dalam hitungan detik. Tanpa pusing mikir dari nol. Cukup paste link, AI kami kerjakan sisanya!
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-10">
-                <a 
-                  href="https://detrastudios.myr.id/catalog/visig-tools-bikin-script-buat-affiliator-creator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(245,158,11,0.4)]"
-                >
-                  Generate Script Pertamamu <Play size={20} className="fill-current" />
-                </a>
-                <p className="text-sm text-slate-500 font-medium">Diskon 46% Hari Ini!</p>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm font-medium text-slate-300">
-                <div className="flex items-center gap-1.5"><CheckCircle2 size={18} className="text-green-400"/> Paste Link Produk</div>
-                <div className="flex items-center gap-1.5"><CheckCircle2 size={18} className="text-green-400"/> Pilih Hook & Durasi</div>
-                <div className="flex items-center gap-1.5"><CheckCircle2 size={18} className="text-green-400"/> Script Langsung Jadi</div>
-              </div>
-            </div>
-
-            {/* Hero Mockup (Advanced Dashboard) */}
-            <div className="relative mx-auto w-full max-w-2xl xl:-mr-12">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-indigo-600 blur-3xl opacity-20 rounded-3xl"></div>
-              
-              <div className="relative bg-[#080d19] border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col text-left font-sans">
-                {/* Top Header */}
-                <div className="flex items-center justify-between px-4 py-3 border-b border-slate-800/80 bg-[#0b1222]">
-                  <div className="flex items-center gap-2">
-                    <div className="bg-blue-600 text-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.5)]">
-                      <Video size={16} fill="currentColor" className="text-white" />
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Hero Copy -->
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-medium text-sm mb-6">
+                        <i data-lucide="zap" class="text-amber-400 w-4 h-4"></i> Viral Script Generator AI
                     </div>
-                    <span className="font-black italic text-lg tracking-tight text-white">VISIG</span>
-                  </div>
-                  
-                  <div className="hidden sm:flex items-center gap-1 text-[9px] md:text-[10px] font-bold text-slate-500 tracking-wider">
-                    <div className="bg-slate-800/80 text-blue-400 px-4 py-1.5 rounded-full">BERANDA</div>
-                    <div className="px-3 py-1.5 hover:text-slate-300 transition cursor-pointer">SOSMED</div>
-                    <div className="px-3 py-1.5 hover:text-slate-300 transition cursor-pointer">ATM ENGINE</div>
-                    <div className="px-3 py-1.5 hover:text-slate-300 transition cursor-pointer">ARSIP</div>
-                  </div>
-                  
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-slate-800/80 rounded-lg text-slate-400 border border-slate-700 cursor-pointer"><Sun size={14}/></div>
-                    <div className="p-1.5 bg-slate-800/80 rounded-lg text-slate-400 border border-slate-700 cursor-pointer"><Key size={14}/></div>
-                    <div className="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-[10px] font-bold text-white shadow-[0_0_10px_rgba(37,99,235,0.5)] cursor-pointer">VI</div>
-                  </div>
-                </div>
-
-                {/* Mockup Body */}
-                <div className="p-5 md:p-8 flex flex-col items-center">
-                  <h2 className="text-2xl md:text-4xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 mb-2 text-center">Viral Script Generator</h2>
-                  <p className="text-[8px] md:text-[10px] font-bold tracking-[0.25em] text-slate-400/80 mb-8 text-center uppercase">Market Leading Script Engine For Digital Creators</p>
-
-                  <div className="w-full bg-[#12192b] border border-slate-700/50 rounded-2xl p-4 md:p-6 space-y-5 shadow-inner">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+                        Udah Niat Bikin Konten Produk... <br class="hidden lg:block"/>
+                        Tiba-tiba Nge-blank, Ide Mentok.. <br class="hidden lg:block"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                            dan Akhirnya Burnout
+                        </span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Sekarang kamu bisa bikin script konten viral dalam hitungan detik. Tanpa pusing mikir dari nol. Cukup paste link, AI kami kerjakan sisanya!
+                    </p>
                     
-                    {/* Row 1 */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="md:col-span-2 space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Link Produk Affiliate</label>
-                        <div className="flex items-center gap-2 bg-[#0b1222] border border-slate-700/60 rounded-xl p-1.5 pl-4">
-                          <span className="text-[13px] text-slate-500 truncate flex-1">Paste link TikTok / Shopee / Tokopedia...</span>
-                          <button className="bg-[#1e3a8a] hover:bg-blue-800 text-blue-200 text-xs font-bold px-4 py-2 rounded-lg transition-colors">PASTE</button>
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Target Karakter</label>
-                        <div className="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3">
-                          <span className="text-[13px] text-slate-500">Contoh: Ibu M...</span>
-                        </div>
-                      </div>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-10">
+                        <a href="https://detrastudios.myr.id/catalog/visig-tools-bikin-script-buat-affiliator-creator" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(245,158,11,0.4)]">
+                            Generate Script Pertamamu <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+                        </a>
+                        <p class="text-sm text-slate-500 font-medium">Diskon 46% Hari Ini!</p>
                     </div>
 
-                    {/* Row 2 */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Gaya Bahasa</label>
-                        <div className="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3 text-[13px] text-white font-semibold truncate text-center cursor-pointer">
-                          Conversationa
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Jenis Hook</label>
-                        <div className="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3 text-[13px] text-white font-semibold truncate text-center cursor-pointer">
-                          False Assumpt
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Jenis CTA</label>
-                        <div className="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3 text-[13px] text-white font-semibold truncate text-center cursor-pointer">
-                          Curiosity-Base
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Thumbnail</label>
-                        <div className="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3 text-[13px] text-white font-semibold truncate text-center cursor-pointer">
-                          🤔 Penasaran..!
-                        </div>
-                      </div>
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm font-medium text-slate-300">
+                        <div class="flex items-center gap-1.5"><i data-lucide="check-circle" class="text-green-400 w-[18px] h-[18px]"></i> Paste Link Produk</div>
+                        <div class="flex items-center gap-1.5"><i data-lucide="check-circle" class="text-green-400 w-[18px] h-[18px]"></i> Pilih Hook & Durasi</div>
+                        <div class="flex items-center gap-1.5"><i data-lucide="check-circle" class="text-green-400 w-[18px] h-[18px]"></i> Script Langsung Jadi</div>
                     </div>
-
-                    {/* Row 3 */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end pt-2">
-                      <div className="grid grid-cols-2 gap-4 md:gap-6 pr-0 md:pr-4">
-                        {/* Slider Durasi */}
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center">
-                            <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Durasi</label>
-                            <span className="bg-[#1e3a8a] text-blue-200 text-[9px] font-bold px-2 py-0.5 rounded-md">30s</span>
-                          </div>
-                          <div className="h-1.5 w-full bg-[#0b1222] rounded-full relative cursor-pointer">
-                            <div className="absolute left-0 top-0 h-full w-1/3 bg-blue-500 rounded-full"></div>
-                            <div className="absolute left-1/3 top-1/2 -translate-y-1/2 w-3 h-3 bg-blue-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)] border-2 border-[#12192b]"></div>
-                          </div>
-                        </div>
-                        {/* Slider Variasi */}
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center">
-                            <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Variasi</label>
-                            <span className="bg-[#3730a3] text-indigo-200 text-[9px] font-bold px-2 py-0.5 rounded-md">6 Opsi</span>
-                          </div>
-                          <div className="h-1.5 w-full bg-[#0b1222] rounded-full relative cursor-pointer">
-                            <div className="absolute left-0 top-0 h-full w-3/4 bg-indigo-500 rounded-full"></div>
-                            <div className="absolute left-3/4 top-1/2 -translate-y-1/2 w-3 h-3 bg-indigo-400 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.8)] border-2 border-[#12192b]"></div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <button className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-black tracking-widest text-xs py-3.5 rounded-xl shadow-[0_0_20px_rgba(79,70,229,0.3)] transition-all transform hover:-translate-y-0.5">
-                        GENERATE VIRAL SCRIPTS
-                      </button>
-                    </div>
-
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Problem Section (PAS - Agitate) */}
-      <section id="problem" className="py-20 bg-slate-900">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Pernah Ngalamin Salah Satu Dari Ini?</h2>
-            <p className="text-lg text-slate-400">Kalau jawabanmu <span className="text-white font-bold">"IYA"</span>, berarti masalahmu bukan malas. Kamu cuma belum punya SISTEM untuk eksekusi yang cepat.</p>
-          </div>
+                <!-- Hero Mockup (Advanced Dashboard) -->
+                <div class="relative mx-auto w-full max-w-2xl xl:-mr-12">
+                    <!-- Glow Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-indigo-600 blur-3xl opacity-20 rounded-3xl"></div>
+                    
+                    <div class="relative bg-[#080d19] border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col text-left font-sans">
+                        <!-- Top Header -->
+                        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800/80 bg-[#0b1222]">
+                            <div class="flex items-center gap-2">
+                                <div class="bg-blue-600 text-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                                    <i data-lucide="video" class="text-white w-4 h-4" style="fill: currentColor;"></i>
+                                </div>
+                                <span class="font-black italic text-lg tracking-tight text-white">VISIG</span>
+                            </div>
+                            
+                            <div class="hidden sm:flex items-center gap-1 text-[9px] md:text-[10px] font-bold text-slate-500 tracking-wider">
+                                <div class="bg-slate-800/80 text-blue-400 px-4 py-1.5 rounded-full">BERANDA</div>
+                                <div class="px-3 py-1.5 hover:text-slate-300 transition cursor-pointer">SOSMED</div>
+                                <div class="px-3 py-1.5 hover:text-slate-300 transition cursor-pointer">ATM ENGINE</div>
+                                <div class="px-3 py-1.5 hover:text-slate-300 transition cursor-pointer">ARSIP</div>
+                            </div>
+                            
+                            <div class="flex items-center gap-2">
+                                <div class="p-1.5 bg-slate-800/80 rounded-lg text-slate-400 border border-slate-700 cursor-pointer"><i data-lucide="sun" class="w-3.5 h-3.5"></i></div>
+                                <div class="p-1.5 bg-slate-800/80 rounded-lg text-slate-400 border border-slate-700 cursor-pointer"><i data-lucide="key" class="w-3.5 h-3.5"></i></div>
+                                <div class="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-[10px] font-bold text-white shadow-[0_0_10px_rgba(37,99,235,0.5)] cursor-pointer">VI</div>
+                            </div>
+                        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              "Udah beli ebook affiliate mahal, tapi tetep bingung mulai dari mana.",
-              "Punya kalender konten, tapi kotak-kotaknya kosong melompong.",
-              "Save ratusan template script di TikTok/IG, tapi ujungnya gak pernah dipakai.",
-              "Niat mau bikin video, tapi pas depan kamera mendadak nge-blank gak tahu ngomong apa.",
-              "Ide selalu mentok sebelum mulai eksekusi. Overthinking duluan.",
-              "Capek mikir hook yang bikin orang beneran berhenti scrolling."
-            ].map((problem, i) => (
-              <div key={i} className="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-colors group">
-                <XCircle size={32} className="text-red-500 mb-4 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
-                <p className="text-slate-300 font-medium leading-relaxed">{problem}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                        <!-- Mockup Body -->
+                        <div class="p-5 md:p-8 flex flex-col items-center">
+                            <h2 class="text-2xl md:text-4xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 mb-2 text-center">Viral Script Generator</h2>
+                            <p class="text-[8px] md:text-[10px] font-bold tracking-[0.25em] text-slate-400/80 mb-8 text-center uppercase">Market Leading Script Engine For Digital Creators</p>
 
-      {/* Solution Section */}
-      <section id="features" className="py-24 relative">
-        <div className="container mx-auto px-6 md:px-12 text-center max-w-4xl">
-          <div className="inline-block mb-6">
-            <span className="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-4 py-1.5 rounded-full text-sm font-bold tracking-wide uppercase">
-              Solusi Untukmu
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-8">Kenalan Dengan VISIG <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Viral Script Generator</span></h2>
-          <p className="text-xl text-slate-300 mb-12 leading-relaxed">
-            Bukan sekadar teori. Bukan ebook motivasi. <br/>
-            VISIG adalah tools AI yang bantu kamu bikin ide & script konten secara otomatis berdasarkan produk, niche, dan tujuan kontenmu sendiri.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <XCircle className="text-red-400"/> Kamu Gak Perlu Lagi:
-              </h3>
-              <ul className="space-y-4">
-                {['Bingung mau bikin konten apa', 'Nulis script capek-capek dari nol', 'Trial-error prompt AI berjam-jam', 'Kehabisan ide setiap hari'].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-400">
-                    <span className="mt-1 block min-w-[6px] h-1.5 rounded-full bg-red-500/50"></span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-indigo-900/40 to-purple-900/40 border border-indigo-500/30 p-8 rounded-2xl">
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <CheckCircle2 className="text-green-400"/> Karena Semuanya:
-              </h3>
-              <ul className="space-y-4">
-                {['Sudah dibantu sistem AI pintar', 'Tinggal copas link produk', 'Pilih gaya bahasa yang pas', 'Langsung siap eksekusi rekaman!'].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-300">
-                    <CheckCircle2 size={18} className="text-green-400 shrink-0 mt-0.5"/>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+                            <div class="w-full bg-[#12192b] border border-slate-700/50 rounded-2xl p-4 md:p-6 space-y-5 shadow-inner">
+                                
+                                <!-- Row 1 -->
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="md:col-span-2 space-y-2">
+                                        <label class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Link Produk Affiliate</label>
+                                        <div class="flex items-center gap-2 bg-[#0b1222] border border-slate-700/60 rounded-xl p-1.5 pl-4">
+                                            <span class="text-[13px] text-slate-500 truncate flex-1">Paste link TikTok / Shopee / Tokopedia...</span>
+                                            <button class="bg-[#1e3a8a] hover:bg-blue-800 text-blue-200 text-xs font-bold px-4 py-2 rounded-lg transition-colors">PASTE</button>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Target Karakter</label>
+                                        <div class="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3">
+                                            <span class="text-[13px] text-slate-500">Contoh: Ibu M...</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-      {/* 3 Main Features */}
-      <section className="py-24 bg-slate-900 relative overflow-hidden">
-        {/* Glow Background */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-indigo-600/10 blur-[100px] rounded-full pointer-events-none"></div>
+                                <!-- Row 2 -->
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                    <div class="space-y-2">
+                                        <label class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Gaya Bahasa</label>
+                                        <div class="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3 text-[13px] text-white font-semibold truncate text-center cursor-pointer">
+                                            Conversationa
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Jenis Hook</label>
+                                        <div class="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3 text-[13px] text-white font-semibold truncate text-center cursor-pointer">
+                                            False Assumpt
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Jenis CTA</label>
+                                        <div class="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3 text-[13px] text-white font-semibold truncate text-center cursor-pointer">
+                                            Curiosity-Base
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Thumbnail</label>
+                                        <div class="bg-[#0b1222] border border-slate-700/60 rounded-xl p-3 text-[13px] text-white font-semibold truncate text-center cursor-pointer">
+                                            🤔 Penasaran
+                                        </div>
+                                    </div>
+                                </div>
 
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="text-center mb-16">
-            <span className="text-indigo-400 font-bold tracking-wider text-sm mb-2 block uppercase">3 Pilar Utama Mesin Kami</span>
-            <h2 className="text-3xl md:text-4xl font-black text-white">Fitur Andalan VISIG</h2>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mt-6 rounded-full"></div>
-            <p className="mt-6 text-slate-400 max-w-2xl mx-auto text-lg">Bukan sekadar pembuat teks biasa. Ini adalah senjata lengkap untuk mendominasi pertempuran di sosial media Anda.</p>
-          </div>
+                                <!-- Row 3 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end pt-2">
+                                    <div class="grid grid-cols-2 gap-4 md:gap-6 pr-0 md:pr-4">
+                                        <!-- Slider Durasi -->
+                                        <div class="space-y-3">
+                                            <div class="flex justify-between items-center">
+                                                <label class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Durasi</label>
+                                                <span class="bg-[#1e3a8a] text-blue-200 text-[9px] font-bold px-2 py-0.5 rounded-md">30s</span>
+                                            </div>
+                                            <div class="h-1.5 w-full bg-[#0b1222] rounded-full relative cursor-pointer">
+                                                <div class="absolute left-0 top-0 h-full w-1/3 bg-blue-500 rounded-full"></div>
+                                                <div class="absolute left-1/3 top-1/2 -translate-y-1/2 w-3 h-3 bg-blue-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)] border-2 border-[#12192b]"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Slider Variasi -->
+                                        <div class="space-y-3">
+                                            <div class="flex justify-between items-center">
+                                                <label class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Variasi</label>
+                                                <span class="bg-[#3730a3] text-indigo-200 text-[9px] font-bold px-2 py-0.5 rounded-md">6 Opsi</span>
+                                            </div>
+                                            <div class="h-1.5 w-full bg-[#0b1222] rounded-full relative cursor-pointer">
+                                                <div class="absolute left-0 top-0 h-full w-3/4 bg-indigo-500 rounded-full"></div>
+                                                <div class="absolute left-3/4 top-1/2 -translate-y-1/2 w-3 h-3 bg-indigo-400 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.8)] border-2 border-[#12192b]"></div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Feature 1 */}
-            <div className="bg-slate-950 p-8 rounded-3xl border border-slate-800 hover:border-blue-500/50 transition-all group relative overflow-hidden shadow-xl">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-110"></div>
-              
-              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border border-blue-500/20 group-hover:scale-110 transition-transform duration-300">
-                <LinkIcon size={32} className="text-blue-400" />
-              </div>
-              <h3 className="text-2xl font-black text-white mb-4">Script Konten <br/>Generator</h3>
-              <p className="text-slate-400 leading-relaxed mb-6">
-                Tidak perlu mikir dari kanvas kosong. Bikin script *high-converting* langsung secara otomatis dengan mendeteksi fitur dari link produk.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs font-bold bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1.5 rounded-lg">Shopee / Tokped</span>
-                <span className="text-xs font-bold bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1.5 rounded-lg">TikTok Shop</span>
-                <span className="text-xs font-bold bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1.5 rounded-lg">Web Affiliate</span>
-              </div>
-            </div>
+                                    <button class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-black tracking-widest text-xs py-3.5 rounded-xl shadow-[0_0_20px_rgba(79,70,229,0.3)] transition-all transform hover:-translate-y-0.5">
+                                        GENERATE VIRAL SCRIPTS
+                                    </button>
+                                </div>
 
-            {/* Feature 2 */}
-            <div className="bg-slate-950 p-8 rounded-3xl border border-slate-800 hover:border-purple-500/50 transition-all group relative overflow-hidden shadow-xl">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-bl-full -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-110"></div>
-              
-              <div className="bg-purple-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border border-purple-500/20 group-hover:scale-110 transition-transform duration-300">
-                <Share2 size={32} className="text-purple-400" />
-              </div>
-              <h3 className="text-2xl font-black text-white mb-4">Sosmed <br/>Enhancement</h3>
-              <p className="text-slate-400 leading-relaxed mb-6">
-                Pengoptimalan dari 1 script menjadi perangkat tempur lengkap untuk berbagai *platform* sosial media dalam sekali klik.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-sm font-medium text-slate-300"><Layers size={16} className="text-purple-400"/> UGC Script Video</li>
-                <li className="flex items-center gap-3 text-sm font-medium text-slate-300"><Layers size={16} className="text-purple-400"/> Feed Post Instagram</li>
-                <li className="flex items-center gap-3 text-sm font-medium text-slate-300"><Layers size={16} className="text-purple-400"/> Format Carousel</li>
-                <li className="flex items-center gap-3 text-sm font-medium text-slate-300"><Layers size={16} className="text-purple-400"/> Utas (X / Threads)</li>
-              </ul>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="bg-gradient-to-b from-slate-950 to-[#120a00] p-8 rounded-3xl border border-amber-500/30 hover:border-amber-500 transition-all group relative overflow-hidden shadow-[0_0_30px_rgba(245,158,11,0.05)] hover:shadow-[0_0_40px_rgba(245,158,11,0.15)]">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-bl-full -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-110"></div>
-              <div className="absolute top-4 right-4 bg-amber-500/20 border border-amber-500 text-amber-400 text-[10px] font-black tracking-widest px-3 py-1 rounded-full uppercase">
-                Most Wanted
-              </div>
-              
-              <div className="bg-amber-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border border-amber-500/30 group-hover:scale-110 transition-transform duration-300 relative">
-                <Cpu size={32} className="text-amber-400 relative z-10" />
-                <div className="absolute inset-0 bg-amber-400 blur-xl opacity-30"></div>
-              </div>
-              <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-500 mb-4">Mesin ATM <br/>AI Engine</h3>
-              <p className="text-slate-300 leading-relaxed mb-6">
-                (Amati, Tiru, Modifikasi). Temukan video kompetitor yang viral, upload ke sistem kami, dan AI akan *reverse-engineer* videonya!
-              </p>
-              <div className="bg-black/40 border border-amber-500/20 p-4 rounded-xl">
-                <p className="text-xs text-amber-200/70 italic leading-relaxed">
-                  "Hasil bedah otomatis menjadi script baru yang unik, siap pakai, namun mempertahankan elemen viral dari video aslinya."
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* How it Works */}
-      <section id="how-it-works" className="py-24">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Tinggal Klik → Langsung Jadi!</h2>
-            <p className="text-lg text-slate-400">Gak perlu skill teknis, gak perlu jago nulis prompt. Semudah hitungan 1, 2, 3.</p>
-          </div>
-
-          <div className="max-w-4xl mx-auto relative">
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-800 -translate-y-1/2 z-0"></div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-              {[
-                { step: "1", title: "Copy Link", desc: "Ambil link produk dari marketplace mana saja." },
-                { step: "2", title: "Paste ke VISIG", desc: "Masukkan ke kolom yang tersedia." },
-                { step: "3", title: "Atur Style", desc: "Pilih gaya bahasa, hook, & durasi." },
-                { step: "4", title: "Generate!", desc: "AI membuat script utuh + hashtag siap posting." }
-              ].map((item, i) => (
-                <div key={i} className="text-center bg-slate-900 border border-slate-700 p-6 rounded-2xl shadow-xl relative">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-black text-xl mx-auto -mt-12 mb-4 border-4 border-slate-900 shadow-lg">
-                    {item.step}
-                  </div>
-                  <h4 className="text-lg font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-sm text-slate-400">{item.desc}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              ))}
             </div>
-          </div>
+        </div>
+    </section>
 
-          {/* Video Demo Section */}
-          <div className="mt-24 text-center">
-            <div className="inline-block mb-8 bg-slate-900 border border-slate-800 px-5 py-2.5 rounded-full shadow-lg">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 font-bold flex items-center gap-2 text-lg">
-                <Play size={20} className="text-amber-500 fill-current" /> Tonton Langsung Cara Kerjanya!
-              </span>
+    <!-- Problem Section (PAS - Agitate) -->
+    <section id="problem" class="py-20 bg-slate-900">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-6">Pernah Ngalamin Salah Satu Dari Ini?</h2>
+                <p class="text-lg text-slate-400">Kalau jawabanmu <span class="text-white font-bold">"IYA"</span>, berarti masalahmu bukan malas. Kamu cuma belum punya SISTEM untuk eksekusi yang cepat.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-colors group">
+                    <i data-lucide="x-circle" class="text-red-500 mb-4 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all w-8 h-8"></i>
+                    <p class="text-slate-300 font-medium leading-relaxed">Udah beli ebook affiliate mahal, tapi tetep bingung mulai dari mana.</p>
+                </div>
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-colors group">
+                    <i data-lucide="x-circle" class="text-red-500 mb-4 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all w-8 h-8"></i>
+                    <p class="text-slate-300 font-medium leading-relaxed">Punya kalender konten, tapi kotak-kotaknya kosong melompong.</p>
+                </div>
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-colors group">
+                    <i data-lucide="x-circle" class="text-red-500 mb-4 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all w-8 h-8"></i>
+                    <p class="text-slate-300 font-medium leading-relaxed">Save ratusan template script di TikTok/IG, tapi ujungnya gak pernah dipakai.</p>
+                </div>
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-colors group">
+                    <i data-lucide="x-circle" class="text-red-500 mb-4 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all w-8 h-8"></i>
+                    <p class="text-slate-300 font-medium leading-relaxed">Niat mau bikin video, tapi pas depan kamera mendadak nge-blank gak tahu ngomong apa.</p>
+                </div>
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-colors group">
+                    <i data-lucide="x-circle" class="text-red-500 mb-4 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all w-8 h-8"></i>
+                    <p class="text-slate-300 font-medium leading-relaxed">Ide selalu mentok sebelum mulai eksekusi. Overthinking duluan.</p>
+                </div>
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-colors group">
+                    <i data-lucide="x-circle" class="text-red-500 mb-4 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all w-8 h-8"></i>
+                    <p class="text-slate-300 font-medium leading-relaxed">Capek mikir hook yang bikin orang beneran berhenti scrolling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="features" class="py-24 relative">
+        <div class="container mx-auto px-6 md:px-12 text-center max-w-4xl">
+            <div class="inline-block mb-6">
+                <span class="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-4 py-1.5 rounded-full text-sm font-bold tracking-wide uppercase">
+                    Solusi Untukmu
+                </span>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-8">Kenalan Dengan VISIG <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Viral Script Generator</span></h2>
+            <p class="text-xl text-slate-300 mb-12 leading-relaxed">
+                Bukan sekadar teori. Bukan ebook motivasi. <br/>
+                VISIG adalah tools AI yang bantu kamu bikin ide & script konten secara otomatis berdasarkan produk, niche, dan tujuan kontenmu sendiri.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i data-lucide="x-circle" class="text-red-400 w-6 h-6"></i> Kamu Gak Perlu Lagi:
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-slate-400">
+                            <span class="mt-1 block min-w-[6px] h-1.5 rounded-full bg-red-500/50"></span>
+                            Bingung mau bikin konten apa
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-400">
+                            <span class="mt-1 block min-w-[6px] h-1.5 rounded-full bg-red-500/50"></span>
+                            Nulis script capek-capek dari nol
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-400">
+                            <span class="mt-1 block min-w-[6px] h-1.5 rounded-full bg-red-500/50"></span>
+                            Trial-error prompt AI berjam-jam
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-400">
+                            <span class="mt-1 block min-w-[6px] h-1.5 rounded-full bg-red-500/50"></span>
+                            Kehabisan ide setiap hari
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-900/40 to-purple-900/40 border border-indigo-500/30 p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="text-green-400 w-6 h-6"></i> Karena Semuanya:
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-slate-300">
+                            <i data-lucide="check-circle" class="text-green-400 shrink-0 mt-0.5 w-[18px] h-[18px]"></i>
+                            Sudah dibantu sistem AI pintar
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300">
+                            <i data-lucide="check-circle" class="text-green-400 shrink-0 mt-0.5 w-[18px] h-[18px]"></i>
+                            Tinggal copas link produk
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300">
+                            <i data-lucide="check-circle" class="text-green-400 shrink-0 mt-0.5 w-[18px] h-[18px]"></i>
+                            Pilih gaya bahasa yang pas
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300">
+                            <i data-lucide="check-circle" class="text-green-400 shrink-0 mt-0.5 w-[18px] h-[18px]"></i>
+                            Langsung siap eksekusi rekaman!
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 Main Features -->
+    <section class="py-24 bg-slate-900 relative overflow-hidden">
+        <!-- Glow Background -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-indigo-600/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-indigo-400 font-bold tracking-wider text-sm mb-2 block uppercase">3 Pilar Utama Mesin Kami</span>
+                <h2 class="text-3xl md:text-4xl font-black text-white">Fitur Andalan VISIG</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mt-6 rounded-full"></div>
+                <p class="mt-6 text-slate-400 max-w-2xl mx-auto text-lg">Bukan sekadar pembuat teks biasa. Ini adalah senjata lengkap untuk mendominasi pertempuran di sosial media Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Feature 1 -->
+                <div class="bg-slate-950 p-8 rounded-3xl border border-slate-800 hover:border-blue-500/50 transition-all group relative overflow-hidden shadow-xl">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-110"></div>
+                    
+                    <div class="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border border-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="link" class="text-blue-400 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-4">Script Konten <br/>Generator</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">
+                        Tidak perlu mikir dari kanvas kosong. Bikin script *high-converting* langsung secara otomatis dengan mendeteksi fitur dari link produk.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-bold bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1.5 rounded-lg">Shopee / Tokped</span>
+                        <span class="text-xs font-bold bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1.5 rounded-lg">TikTok Shop</span>
+                        <span class="text-xs font-bold bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1.5 rounded-lg">Web Affiliate</span>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-slate-950 p-8 rounded-3xl border border-slate-800 hover:border-purple-500/50 transition-all group relative overflow-hidden shadow-xl">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-bl-full -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-110"></div>
+                    
+                    <div class="bg-purple-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border border-purple-500/20 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="share-2" class="text-purple-400 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-4">Sosmed <br/>Enhancement</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">
+                        Pengoptimalan dari 1 script menjadi perangkat tempur lengkap untuk berbagai *platform* sosial media dalam sekali klik.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm font-medium text-slate-300"><i data-lucide="layers" class="text-purple-400 w-4 h-4"></i> UGC Script Video</li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-slate-300"><i data-lucide="layers" class="text-purple-400 w-4 h-4"></i> Feed Post Instagram</li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-slate-300"><i data-lucide="layers" class="text-purple-400 w-4 h-4"></i> Format Carousel</li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-slate-300"><i data-lucide="layers" class="text-purple-400 w-4 h-4"></i> Utas (X / Threads)</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-gradient-to-b from-slate-950 to-[#120a00] p-8 rounded-3xl border border-amber-500/30 hover:border-amber-500 transition-all group relative overflow-hidden shadow-[0_0_30px_rgba(245,158,11,0.05)] hover:shadow-[0_0_40px_rgba(245,158,11,0.15)]">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-bl-full -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-110"></div>
+                    <div class="absolute top-4 right-4 bg-amber-500/20 border border-amber-500 text-amber-400 text-[10px] font-black tracking-widest px-3 py-1 rounded-full uppercase">
+                        Most Wanted
+                    </div>
+                    
+                    <div class="bg-amber-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border border-amber-500/30 group-hover:scale-110 transition-transform duration-300 relative">
+                        <i data-lucide="cpu" class="text-amber-400 relative z-10 w-8 h-8"></i>
+                        <div class="absolute inset-0 bg-amber-400 blur-xl opacity-30"></div>
+                    </div>
+                    <h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-500 mb-4">Mesin ATM <br/>AI Engine</h3>
+                    <p class="text-slate-300 leading-relaxed mb-6">
+                        (Amati, Tiru, Modifikasi). Temukan video kompetitor yang viral, upload ke sistem kami, dan AI akan *reverse-engineer* videonya!
+                    </p>
+                    <div class="bg-black/40 border border-amber-500/20 p-4 rounded-xl">
+                        <p class="text-xs text-amber-200/70 italic leading-relaxed">
+                            "Hasil bedah otomatis menjadi script baru yang unik, siap pakai, namun mempertahankan elemen viral dari video aslinya."
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="how-it-works" class="py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-6">Tinggal Klik → Langsung Jadi!</h2>
+                <p class="text-lg text-slate-400">Gak perlu skill teknis, gak perlu jago nulis prompt. Semudah hitungan 1, 2, 3.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-800 -translate-y-1/2 z-0"></div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    <div class="text-center bg-slate-900 border border-slate-700 p-6 rounded-2xl shadow-xl relative">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-black text-xl mx-auto -mt-12 mb-4 border-4 border-slate-900 shadow-lg">1</div>
+                        <h4 class="text-lg font-bold text-white mb-2">Copy Link</h4>
+                        <p class="text-sm text-slate-400">Ambil link produk dari marketplace mana saja.</p>
+                    </div>
+                    <div class="text-center bg-slate-900 border border-slate-700 p-6 rounded-2xl shadow-xl relative">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-black text-xl mx-auto -mt-12 mb-4 border-4 border-slate-900 shadow-lg">2</div>
+                        <h4 class="text-lg font-bold text-white mb-2">Paste ke VISIG</h4>
+                        <p class="text-sm text-slate-400">Masukkan ke kolom yang tersedia.</p>
+                    </div>
+                    <div class="text-center bg-slate-900 border border-slate-700 p-6 rounded-2xl shadow-xl relative">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-black text-xl mx-auto -mt-12 mb-4 border-4 border-slate-900 shadow-lg">3</div>
+                        <h4 class="text-lg font-bold text-white mb-2">Atur Style</h4>
+                        <p class="text-sm text-slate-400">Pilih gaya bahasa, hook, & durasi.</p>
+                    </div>
+                    <div class="text-center bg-slate-900 border border-slate-700 p-6 rounded-2xl shadow-xl relative">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-black text-xl mx-auto -mt-12 mb-4 border-4 border-slate-900 shadow-lg">4</div>
+                        <h4 class="text-lg font-bold text-white mb-2">Generate!</h4>
+                        <p class="text-sm text-slate-400">AI membuat script utuh + hashtag siap posting.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Demo Section -->
+            <div class="mt-24 text-center">
+                <div class="inline-block mb-8 bg-slate-900 border border-slate-800 px-5 py-2.5 rounded-full shadow-lg">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 font-bold flex items-center gap-2 text-lg">
+                        <i data-lucide="play" class="text-amber-500 w-5 h-5 fill-current"></i> Tonton Langsung Cara Kerjanya!
+                    </span>
+                </div>
+                
+                <div class="relative mx-auto max-w-[300px] sm:max-w-[340px] rounded-[2.5rem] border-[8px] sm:border-[10px] border-slate-900 shadow-[0_0_60px_rgba(99,102,241,0.25)] overflow-hidden bg-black ring-1 ring-slate-800">
+                    <!-- Notch / Camera Hole Simulation -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-slate-900 rounded-b-xl z-10"></div>
+                    
+                    <!-- Aspect Ratio Container for Shorts (9:16) -->
+                    <div class="relative pt-[177.77%]">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/3atiVSIu9P0?rel=0&modestbranding=1" title="Demo Penggunaan VISIG" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <p class="mt-6 text-slate-500 text-sm italic">Video diambil langsung dari penggunaan Dashboard VISIG.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="py-20 bg-indigo-900/20 border-y border-indigo-500/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50" style="-webkit-mask-image: linear-gradient(to bottom, transparent, black, transparent); mask-image: linear-gradient(to bottom, transparent, black, transparent);"></div>
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-black text-white mb-6">VISIG Dibuat Spesial Untuk Kamu Yang...</h2>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4 items-start bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                            <div class="bg-indigo-500/20 p-2 rounded-lg mt-1"><i data-lucide="trending-up" class="text-indigo-400 w-5 h-5"></i></div>
+                            <p class="text-slate-300 font-medium">Affiliate marketer pemula yang pengen cepat cuan tanpa pusing nulis script.</p>
+                        </li>
+                        <li class="flex gap-4 items-start bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                            <div class="bg-indigo-500/20 p-2 rounded-lg mt-1"><i data-lucide="trending-up" class="text-indigo-400 w-5 h-5"></i></div>
+                            <p class="text-slate-300 font-medium">Konten kreator yang selalu kehabisan ide tiap hari.</p>
+                        </li>
+                        <li class="flex gap-4 items-start bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                            <div class="bg-indigo-500/20 p-2 rounded-lg mt-1"><i data-lucide="trending-up" class="text-indigo-400 w-5 h-5"></i></div>
+                            <p class="text-slate-300 font-medium">Seller online yang pengen bikin video promosi produknya sendiri.</p>
+                        </li>
+                        <li class="flex gap-4 items-start bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                            <div class="bg-indigo-500/20 p-2 rounded-lg mt-1"><i data-lucide="trending-up" class="text-indigo-400 w-5 h-5"></i></div>
+                            <p class="text-slate-300 font-medium">Influencer yang harus posting rutin tapi bingung mau ngomong apa lagi.</p>
+                        </li>
+                        <li class="flex gap-4 items-start bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                            <div class="bg-indigo-500/20 p-2 rounded-lg mt-1"><i data-lucide="trending-up" class="text-indigo-400 w-5 h-5"></i></div>
+                            <p class="text-slate-300 font-medium">Siapapun yang capek ngetik prompt AI panjang tapi hasilnya masih random!</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="bg-gradient-to-br from-orange-500 to-amber-500 p-8 rounded-3xl shadow-2xl text-center transform lg:rotate-2 hover:rotate-0 transition-transform duration-300">
+                        <h3 class="text-3xl font-black text-white mb-4">"Sebaik-baiknya ide adalah yang dieksekusi."</h3>
+                        <p class="text-orange-100 text-lg mb-0 font-medium">VISIG dibuat supaya kamu bisa eksekusi lebih cepat.<br/>Berhenti mikir, mulai posting!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Offer Section -->
+    <section id="pricing" class="py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="max-w-4xl mx-auto bg-slate-900 rounded-3xl border border-slate-700 overflow-hidden shadow-2xl">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Left Side (What you get) -->
+                    <div class="p-8 md:p-12 md:w-3/5">
+                        <h2 class="text-2xl font-black text-white mb-2">Ambil VISIG Sekarang Sebelum Harga Naik!</h2>
+                        <p class="text-slate-400 mb-8">Dapatkan akses penuh ke sistem mesin pembuat konten viralmu.</p>
+                        
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">Yang Kamu Dapatkan:</h3>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="text-indigo-400 shrink-0 w-5 h-5"></i>
+                                <div>
+                                    <strong class="text-white block">VISIG Viral Script Generator</strong>
+                                    <span class="text-sm text-slate-400">Tools AI pembuat script otomatis</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="text-indigo-400 shrink-0 w-5 h-5"></i>
+                                <div>
+                                    <strong class="text-white block">Prompt Generator & Hook Targeting</strong>
+                                    <span class="text-sm text-slate-400">Arahkan konten ke audience yang tepat</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="text-indigo-400 shrink-0 w-5 h-5"></i>
+                                <div>
+                                    <strong class="text-white block">FREE UPDATE</strong>
+                                    <span class="text-sm text-slate-400">Gratis update aplikasi selama versi 1</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
+                                <i data-lucide="zap" class="text-amber-400 shrink-0 w-5 h-5"></i>
+                                <div>
+                                    <strong class="text-amber-400 block">BONUS SPESIAL</strong>
+                                    <span class="text-sm text-slate-300">Ebook Panduan Jualan Produk Digital</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right Side (Pricing) -->
+                    <div class="bg-slate-950 p-8 md:p-12 md:w-2/5 flex flex-col justify-center items-center text-center border-l border-slate-800 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-8 py-1.5 translate-x-6 translate-y-4 rotate-45 shadow-lg">
+                            PROMO TERBATAS
+                        </div>
+                        <p class="text-slate-400 font-medium mb-2">Harga Normal: <span class="line-through decoration-red-500 decoration-2">Rp 120.000</span></p>
+                        <div class="flex items-start justify-center mb-2">
+                            <span class="text-2xl font-bold text-white mt-1">Rp</span>
+                            <span class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">64<span class="text-4xl">.000</span></span>
+                        </div>
+                        <p class="text-indigo-400 font-bold bg-indigo-500/10 px-4 py-1 rounded-full text-sm mb-8 inline-block border border-indigo-500/20">Sekali Bayar. Bisa Dipakai Berkali-kali.</p>
+                        
+                        <a href="https://detrastudios.myr.id/catalog/visig-tools-bikin-script-buat-affiliator-creator" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.4)] transform transition hover:-translate-y-1 flex items-center justify-center gap-2 text-lg">
+                            <i data-lucide="shopping-cart" class="w-5 h-5"></i> Beli VISIG Sekarang
+                        </a>
+                        <p class="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
+                            <i data-lucide="check-circle" class="w-3 h-3"></i> Garansi Support jika ada kendala
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-slate-900 border-t border-slate-800">
+        <div class="container mx-auto px-6 md:px-12 max-w-3xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-white">Pertanyaan Sering Muncul (FAQ)</h2>
             </div>
             
-            <div className="relative mx-auto max-w-[300px] sm:max-w-[340px] rounded-[2.5rem] border-[8px] sm:border-[10px] border-slate-900 shadow-[0_0_60px_rgba(99,102,241,0.25)] overflow-hidden bg-black ring-1 ring-slate-800">
-              {/* Notch / Camera Hole Simulation */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-slate-900 rounded-b-xl z-10"></div>
-              
-              {/* Aspect Ratio Container for Shorts (9:16) */}
-              <div className="relative pt-[177.77%]">
-                <iframe 
-                  className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube-nocookie.com/embed/3atiVSIu9P0?rel=0&modestbranding=1" 
-                  title="Demo Penggunaan VISIG" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-            <p className="mt-6 text-slate-500 text-sm italic">Video diambil langsung dari penggunaan Dashboard VISIG.</p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Target Audience */}
-      <section className="py-20 bg-indigo-900/20 border-y border-indigo-500/20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50 mask-image:linear-gradient(to_bottom,transparent,black,transparent)"></div>
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="flex flex-col lg:flex-row gap-12 items-center">
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-6">VISIG Dibuat Spesial Untuk Kamu Yang...</h2>
-              <ul className="space-y-6">
-                {[
-                  "Affiliate marketer pemula yang pengen cepat cuan tanpa pusing nulis script.",
-                  "Konten kreator yang selalu kehabisan ide tiap hari.",
-                  "Seller online yang pengen bikin video promosi produknya sendiri.",
-                  "Influencer yang harus posting rutin tapi bingung mau ngomong apa lagi.",
-                  "Siapapun yang capek ngetik prompt AI panjang tapi hasilnya masih random!"
-                ].map((text, i) => (
-                  <li key={i} className="flex gap-4 items-start bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
-                    <div className="bg-indigo-500/20 p-2 rounded-lg mt-1">
-                      <TrendingUp size={20} className="text-indigo-400"/>
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="border border-slate-800 rounded-xl bg-slate-950 overflow-hidden transition-all duration-200">
+                    <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white pr-4">Apakah cocok untuk pemula?</span>
+                        <i data-lucide="chevron-down" class="text-slate-500 shrink-0 icon-down w-5 h-5"></i>
+                        <i data-lucide="chevron-up" class="text-indigo-500 shrink-0 icon-up w-5 h-5 hidden"></i>
+                    </button>
+                    <div class="px-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 faq-content">
+                        <p class="text-slate-400 leading-relaxed border-t border-slate-800 pt-4 mt-1">Sangat cocok. Bahkan kalau kamu belum pernah bikin script sebelumnya, sistem ini dirancang semudah copy-paste.</p>
                     </div>
-                    <p className="text-slate-300 font-medium">{text}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="lg:w-1/2 w-full">
-              <div className="bg-gradient-to-br from-orange-500 to-amber-500 p-8 rounded-3xl shadow-2xl text-center transform lg:rotate-2 hover:rotate-0 transition-transform duration-300">
-                <h3 className="text-3xl font-black text-white mb-4">"Sebaik-baiknya ide adalah yang dieksekusi."</h3>
-                <p className="text-orange-100 text-lg mb-0 font-medium">VISIG dibuat supaya kamu bisa eksekusi lebih cepat.<br/>Berhenti mikir, mulai posting!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing / Offer Section */}
-      <section id="pricing" className="py-24">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto bg-slate-900 rounded-3xl border border-slate-700 overflow-hidden shadow-2xl">
-            <div className="flex flex-col md:flex-row">
-              {/* Left Side (What you get) */}
-              <div className="p-8 md:p-12 md:w-3/5">
-                <h2 className="text-2xl font-black text-white mb-2">Ambil VISIG Sekarang Sebelum Harga Naik!</h2>
-                <p className="text-slate-400 mb-8">Dapatkan akses penuh ke sistem mesin pembuat konten viralmu.</p>
-                
-                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">Yang Kamu Dapatkan:</h3>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-indigo-400 shrink-0"/>
-                    <div>
-                      <strong className="text-white block">VISIG Viral Script Generator</strong>
-                      <span className="text-sm text-slate-400">Tools AI pembuat script otomatis</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-indigo-400 shrink-0"/>
-                    <div>
-                      <strong className="text-white block">Prompt Generator & Hook Targeting</strong>
-                      <span className="text-sm text-slate-400">Arahkan konten ke audience yang tepat</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-indigo-400 shrink-0"/>
-                    <div>
-                      <strong className="text-white block">FREE UPDATE</strong>
-                      <span className="text-sm text-slate-400">Gratis update aplikasi selama versi 1</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3 bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
-                    <Zap size={20} className="text-amber-400 shrink-0"/>
-                    <div>
-                      <strong className="text-amber-400 block">BONUS SPESIAL</strong>
-                      <span className="text-sm text-slate-300">Ebook Panduan Jualan Produk Digital</span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Right Side (Pricing) */}
-              <div className="bg-slate-950 p-8 md:p-12 md:w-2/5 flex flex-col justify-center items-center text-center border-l border-slate-800 relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-8 py-1.5 translate-x-6 translate-y-4 rotate-45 shadow-lg">
-                  PROMO TERBATAS
                 </div>
-                <p className="text-slate-400 font-medium mb-2">Harga Normal: <span className="line-through decoration-red-500 decoration-2">Rp 120.000</span></p>
-                <div className="flex items-start justify-center mb-2">
-                  <span className="text-2xl font-bold text-white mt-1">Rp</span>
-                  <span className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">64<span className="text-4xl">.000</span></span>
+                <!-- FAQ 2 -->
+                <div class="border border-slate-800 rounded-xl bg-slate-950 overflow-hidden transition-all duration-200">
+                    <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white pr-4">Bisa dipakai untuk semua marketplace?</span>
+                        <i data-lucide="chevron-down" class="text-slate-500 shrink-0 icon-down w-5 h-5"></i>
+                        <i data-lucide="chevron-up" class="text-indigo-500 shrink-0 icon-up w-5 h-5 hidden"></i>
+                    </button>
+                    <div class="px-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 faq-content">
+                        <p class="text-slate-400 leading-relaxed border-t border-slate-800 pt-4 mt-1">Ya. Bisa untuk link produk dari Shopee, Tokopedia, TikTok Shop, Lazada, bahkan landing page pribadi.</p>
+                    </div>
                 </div>
-                <p className="text-indigo-400 font-bold bg-indigo-500/10 px-4 py-1 rounded-full text-sm mb-8 inline-block border border-indigo-500/20">Sekali Bayar. Bisa Dipakai Berkali-kali.</p>
-                
-                <a 
-                  href="https://detrastudios.myr.id/catalog/visig-tools-bikin-script-buat-affiliator-creator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.4)] transform transition hover:-translate-y-1 flex items-center justify-center gap-2 text-lg"
-                >
-                  <ShoppingCart size={20} /> Beli VISIG Sekarang
-                </a>
-                <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
-                  <CheckCircle2 size={12}/> Garansi Support jika ada kendala
-                </p>
-              </div>
+                <!-- FAQ 3 -->
+                <div class="border border-slate-800 rounded-xl bg-slate-950 overflow-hidden transition-all duration-200">
+                    <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white pr-4">Apakah harus bisa AI atau jago prompt?</span>
+                        <i data-lucide="chevron-down" class="text-slate-500 shrink-0 icon-down w-5 h-5"></i>
+                        <i data-lucide="chevron-up" class="text-indigo-500 shrink-0 icon-up w-5 h-5 hidden"></i>
+                    </button>
+                    <div class="px-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 faq-content">
+                        <p class="text-slate-400 leading-relaxed border-t border-slate-800 pt-4 mt-1">Tidak. Semua kerumitan prompt sudah kami sembunyikan di belakang layar. Kamu cuma tinggal isi form simpel.</p>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="border border-slate-800 rounded-xl bg-slate-950 overflow-hidden transition-all duration-200">
+                    <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white pr-4">Apakah ada update?</span>
+                        <i data-lucide="chevron-down" class="text-slate-500 shrink-0 icon-down w-5 h-5"></i>
+                        <i data-lucide="chevron-up" class="text-indigo-500 shrink-0 icon-up w-5 h-5 hidden"></i>
+                    </button>
+                    <div class="px-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 faq-content">
+                        <p class="text-slate-400 leading-relaxed border-t border-slate-800 pt-4 mt-1">Ya. Kamu akan mendapatkan FREE update selama versi 1.</p>
+                    </div>
+                </div>
+                <!-- FAQ 5 -->
+                <div class="border border-slate-800 rounded-xl bg-slate-950 overflow-hidden transition-all duration-200">
+                    <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white pr-4">Apakah ini sekadar ebook?</span>
+                        <i data-lucide="chevron-down" class="text-slate-500 shrink-0 icon-down w-5 h-5"></i>
+                        <i data-lucide="chevron-up" class="text-indigo-500 shrink-0 icon-up w-5 h-5 hidden"></i>
+                    </button>
+                    <div class="px-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 faq-content">
+                        <p class="text-slate-400 leading-relaxed border-t border-slate-800 pt-4 mt-1">Bukan. Ini adalah tools aktif (Generator) yang bisa langsung kamu gunakan untuk memproduksi script.</p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-slate-900 border-t border-slate-800">
-        <div className="container mx-auto px-6 md:px-12 max-w-3xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-black text-white">Pertanyaan Sering Muncul (FAQ)</h2>
-          </div>
-          
-          <div className="space-y-4">
-            {[
-              { q: "Apakah cocok untuk pemula?", a: "Sangat cocok. Bahkan kalau kamu belum pernah bikin script sebelumnya, sistem ini dirancang semudah copy-paste." },
-              { q: "Bisa dipakai untuk semua marketplace?", a: "Ya. Bisa untuk link produk dari Shopee, Tokopedia, TikTok Shop, Lazada, bahkan landing page pribadi." },
-              { q: "Apakah harus bisa AI atau jago prompt?", a: "Tidak. Semua kerumitan prompt sudah kami sembunyikan di belakang layar. Kamu cuma tinggal isi form simpel." },
-              { q: "Apakah ada update?", a: "Ya. Kamu akan mendapatkan FREE update selama versi 1." },
-              { q: "Apakah ini sekadar ebook?", a: "Bukan. Ini adalah tools aktif (Generator) yang bisa langsung kamu gunakan untuk memproduksi script." }
-            ].map((faq, index) => (
-              <FAQItem key={index} question={faq.q} answer={faq.a} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer / Closing */}
-      <footer className="bg-slate-950 pt-20 pb-10 border-t border-slate-900">
-        <div className="container mx-auto px-6 md:px-12 text-center max-w-2xl mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Jangan Biarkan Ide Berhenti di Kepala.</h2>
-          <p className="text-slate-400 text-lg mb-8 italic">"Karena konten yang menghasilkan... adalah konten yang diposting."</p>
-          <div className="bg-slate-900 inline-flex items-center gap-3 p-2 rounded-full border border-slate-800 text-sm md:text-base mb-8">
-            <span className="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Copy Link</span> <ArrowRight size={14} className="text-slate-500"/>
-            <span className="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Generate</span> <ArrowRight size={14} className="text-slate-500"/>
-            <span className="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Posting</span> <ArrowRight size={14} className="text-slate-500"/>
-            <span className="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded-full font-bold">Closing!</span>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-6 md:px-12 border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <div className="flex flex-col items-center md:items-start">
-            <div className="flex items-center gap-2 font-black italic text-white mb-2 text-xl">
-              <div className="bg-blue-600 text-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.5)]">
-                <Video size={16} fill="currentColor" className="text-white" />
-              </div>
-              VISIG
+    <!-- Footer / Closing -->
+    <footer class="bg-slate-950 pt-20 pb-10 border-t border-slate-900">
+        <div class="container mx-auto px-6 md:px-12 text-center max-w-2xl mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Jangan Biarkan Ide Berhenti di Kepala.</h2>
+            <p class="text-slate-400 text-lg mb-8 italic">"Karena konten yang menghasilkan... adalah konten yang diposting."</p>
+            <div class="bg-slate-900 inline-flex items-center gap-3 p-2 rounded-full border border-slate-800 text-sm md:text-base mb-8">
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Copy Link</span> <i data-lucide="arrow-right" class="text-slate-500 w-3.5 h-3.5"></i>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Generate</span> <i data-lucide="arrow-right" class="text-slate-500 w-3.5 h-3.5"></i>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Posting</span> <i data-lucide="arrow-right" class="text-slate-500 w-3.5 h-3.5"></i>
+                <span class="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded-full font-bold">Closing!</span>
             </div>
-            <p>© 2026 Detra Studios. Semua Hak Dilindungi.</p>
-          </div>
-          <div className="text-center md:text-right">
-            <p className="mb-1">Tools VISIG tidak boleh diperjualbelikan kembali tanpa izin resmi.</p>
-            <div className="flex flex-wrap justify-center md:justify-end gap-4 mt-2">
-              <a href="https://instagram.com/detrastudios" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400 transition flex items-center gap-1"><MessageSquare size={14}/> Bantuan: @detrastudios</a>
-              <a href="https://instagram.com/detrastudios" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400 transition flex items-center gap-1"><TrendingUp size={14}/> Info Afiliator: @detrastudios</a>
-            </div>
-          </div>
         </div>
-      </footer>
-    </div>
-  );
-}
 
-// Simple Accordion Component for FAQ
-function FAQItem({ question, answer }) {
-  const [isOpen, setIsOpen] = useState(false);
+        <div class="container mx-auto px-6 md:px-12 border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+            <div class="flex flex-col items-center md:items-start">
+                <div class="flex items-center gap-2 font-black italic text-white mb-2 text-xl">
+                    <div class="bg-blue-600 text-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                        <i data-lucide="video" class="text-white w-4 h-4" style="fill: currentColor;"></i>
+                    </div>
+                    VISIG
+                </div>
+                <p>© 2026 Detra Studios. Semua Hak Dilindungi.</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="mb-1">Tools VISIG tidak boleh diperjualbelikan kembali tanpa izin resmi.</p>
+                <div class="flex flex-wrap justify-center md:justify-end gap-4 mt-2">
+                    <a href="https://instagram.com/detrastudios" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition flex items-center gap-1"><i data-lucide="message-square" class="w-3.5 h-3.5"></i> Bantuan: @detrastudios</a>
+                    <a href="https://instagram.com/detrastudios" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition flex items-center gap-1"><i data-lucide="trending-up" class="w-3.5 h-3.5"></i> Info Afiliator: @detrastudios</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  return (
-    <div className="border border-slate-800 rounded-xl bg-slate-950 overflow-hidden transition-all duration-200">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center p-5 text-left focus:outline-none"
-      >
-        <span className="font-bold text-white pr-4">{question}</span>
-        {isOpen ? <ChevronUp size={20} className="text-indigo-500 shrink-0" /> : <ChevronDown size={20} className="text-slate-500 shrink-0" />}
-      </button>
-      <div 
-        className={`px-5 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 pb-5 opacity-100' : 'max-h-0 opacity-0'}`}
-      >
-        <p className="text-slate-400 leading-relaxed border-t border-slate-800 pt-4 mt-1">{answer}</p>
-      </div>
-    </div>
-  );
-}
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle scroll for sticky header
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-slate-950/80', 'backdrop-blur-md', 'border-b', 'border-slate-800', 'py-4');
+                navbar.classList.remove('bg-transparent', 'py-6');
+            } else {
+                navbar.classList.remove('bg-slate-950/80', 'backdrop-blur-md', 'border-b', 'border-slate-800', 'py-4');
+                navbar.classList.add('bg-transparent', 'py-6');
+            }
+        });
+
+        // Handle FAQ Accordion Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const iconDown = button.querySelector('.icon-down');
+            const iconUp = button.querySelector('.icon-up');
+            
+            // Periksa apakah sedang tertutup
+            const isClosed = content.classList.contains('max-h-0');
+
+            if (isClosed) {
+                // Buka FAQ
+                content.classList.remove('max-h-0', 'opacity-0');
+                content.classList.add('max-h-40', 'pb-5', 'opacity-100');
+                iconDown.classList.add('hidden');
+                iconUp.classList.remove('hidden');
+            } else {
+                // Tutup FAQ
+                content.classList.add('max-h-0', 'opacity-0');
+                content.classList.remove('max-h-40', 'pb-5', 'opacity-100');
+                iconDown.classList.remove('hidden');
+                iconUp.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
